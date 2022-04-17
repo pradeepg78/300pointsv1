@@ -23,25 +23,27 @@ class Main {
         Player p1 = new Player(name);
 
         System.out.println("Hello " + p1.getName() + "! Welcome to Trivia Monsters");
+      System.out.println(); 
 
 
         String[][] board = twoDArraysUses.gridOfXandO(12);
 
         twoDArraysUses.printGrid(board);
-
-        System.out.println("You begin on the 0 part and your job is to reach *, you can only move unit space at a time and you will need to find animals as well");
+        System.out.println(); 
+        System.out.println("You begin at 0, and your job is to reach the *. You can only move one space at a time and you will need to find animals as you move along the maze. ");
         int row = 11;
         int colm = 5;
         int num = 0;
         int qNumbers = 0;
         while(colm != 0){
 
-            System.out.println("Reply with which direction you want to go, you cant go on the X spots");
-            System.out.println("If you want info on your player Reply with 'info' ");
+            System.out.println("You cannot move through the spots labeled 'X'.");
+            System.out.println("Enter 'left', 'right', 'up', or 'down'."); 
+            System.out.print("If you want info on your player, reply with 'info': ");
             String choice = sc.nextLine();
 
             if(choice.contains("info")){
-                System.out.println("Do you have any animals in your inventory");
+                System.out.print("Do you have any animals in your inventory? :");
                 String reply = sc.nextLine();
                 if(reply.equals("yes")){
                     p1.info();
@@ -87,7 +89,7 @@ class Main {
             }
             else if(choice.contains("right")){
                 if(board[row][colm+1].equals("X")){
-                    System.out.println("Invalid choice b/c X");
+                    System.out.println("Invalid choice.");
                 }
                 else{
                     board[row][colm] = " ";
@@ -121,10 +123,10 @@ class Main {
             }
             else if(choice.contains("up")){
                 if(row - 1 == -1 ){
-                    System.out.println("Invalid not in input range");
+                    System.out.println("Invalid choice. ");
                 }
                 else if(board[row-1][colm].equals("X")){
-                    System.out.println("Invalid choice b/c X");
+                    System.out.println("Invalid choice. ");
                 }
                 else{
                     board[row][colm] = " ";
@@ -163,7 +165,7 @@ class Main {
                     System.out.println("Not in input range");
                 }
                 else if(board[row+1][colm].equals("X")){
-                    System.out.println("Invalid choice b/c X");
+                    System.out.println("Invalid choice.");
                 }
                 else{
                     board[row][colm] = " ";
@@ -196,7 +198,7 @@ class Main {
                 }
             }
             else{
-                System.out.println("Invalid direction");
+                System.out.println("Invalid choice. ");
             }
         }
         System.out.println("Congrats on finishing the game! Hopefully your awareness of the mistreatment of animals allowed you recieved some have you?");
